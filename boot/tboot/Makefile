@@ -14,7 +14,7 @@ include $(INCLUDE_DIR)/host-build.mk
 include $(INCLUDE_DIR)/package.mk
 
 define Package/tboot
-  CATEGORY:=Base System
+  CATEGORY:=Base system
   SECTION:=boot
   TITLE:=Trusted Boot
   URL:=https://sourceforge.net/projects/tboot/
