@@ -7,7 +7,7 @@ PKG_RELEASE:=1
 PKG_BUILD_DIR:=$(BUILD_DIR)/tboot-$(PKG_VERSION)
 PKG_SOURCE:=tboot-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=@SF/tboot
-PKG_MD5SUM:=aedb2f65a52cdfe00e2cf5b737f85b50
+PKG_MD5SUM:=f0caf051adc8e53c7ad94533260649c0
 PKG_CAT:=zcat
 
 include $(INCLUDE_DIR)/host-build.mk
