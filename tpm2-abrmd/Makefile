@@ -29,4 +29,8 @@ define Package/$(PKG_NAME)/description
 endef
 
 
+define Package/$(PKG_NAME)/install
+	$(INSTALL_DIR) $(1)/usr/bin
+endef
+
 $(eval $(call BuildPackage,$(PKG_NAME)))
