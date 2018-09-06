@@ -21,6 +21,7 @@ define Package/$(PKG_NAME)
   CATEGORY:=Utilities
   TITLE:=TPM2-TSS
   URL:=http://trousers.sourceforge.net
+  DEPENDS+= +libgcrypt
 endef
 
 define Package/$(PKG_NAME)/description
