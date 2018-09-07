@@ -30,7 +30,8 @@ TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g
 define Package/$(PKG_NAME)/description
 TPM2-TSS
 endef
-$define Package/$(PKG_NAME)/install
+
+define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-mu/.libs/libtss2-mu.so* $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-sys/.libs/libtss2-sys.so* $(1)/usr/lib
