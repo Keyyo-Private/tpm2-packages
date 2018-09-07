@@ -28,12 +28,27 @@ endef
 TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATION)
 
 define Package/$(PKG_NAME)/description
-  TPM2-TSS
+TPM2-TSS
+endef
+$define Package/$(PKG_NAME)/install
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-mu/.libs/libtss2-mu.so* $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-sys/.libs/libtss2-sys.so* $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-esys/.libs/libtss2-esys.so* $(1)/usr/lib/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-tcti/.libs/libtss2-tcti-*.so* $(1)/usr/lib/
 endef
 
+define Build/InstallDev
+	$(INSTALL_DIR) $(1)/usr/include
+	$(CP) $(PKG_BUILD_DIR)/include/tss2 $(1)/usr/include/
 
-define Package/$(PKG_NAME)/install
-        $(INSTALL_DIR) $(1)/usr/bin
+	$(INSTALL_DIR) $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-mu/.libs/libtss2-mu.so* $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-sys/.libs/libtss2-sys.so* $(1)/usr/lib
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-esys/.libs/libtss2-esys.so* $(1)/usr/lib/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/tss2-tcti/.libs/libtss2-tcti-*.so* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib/pkgconfig/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/*.pc $(1)/usr/lib/pkgconfig/
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
