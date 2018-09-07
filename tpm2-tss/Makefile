@@ -13,8 +13,6 @@ PKG_LICENSE:=CPL-1.0
 PKG_LICENSE_FILES:=LICENCE
 PKG_BUILD_DEPENDS:=libgcrypt
 
-
-
 PKG_INSTALL:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -27,7 +25,7 @@ define Package/$(PKG_NAME)
   DEPENDS+= +libgcrypt
 endef
 
-TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATI$
+TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATION)
 
 define Package/$(PKG_NAME)/description
   TPM2-TSS
@@ -37,6 +35,5 @@ endef
 define Package/$(PKG_NAME)/install
         $(INSTALL_DIR) $(1)/usr/bin
 endef
-
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
