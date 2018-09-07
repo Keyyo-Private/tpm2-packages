@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=tpm2-tss
-PKG_VERSION:=2.0.1
+PKG_NAME:=tpm2-tools
+PKG_VERSION:=3.1.2
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
@@ -11,7 +11,7 @@ PKG_HASH:=a53b25214375a10d87d0c0b0a702a3402c1f19e218196d4a2a44810516b260e5
 PKG_FIXUP:=patch-libtool
 PKG_LICENSE:=CPL-1.0
 PKG_LICENSE_FILES:=LICENCE
-PKG_BUILD_DEPENDS:=libgcrypt
+PKG_BUILD_DEPENDS:=tpm2-tss
 
 
 
@@ -24,13 +24,15 @@ define Package/$(PKG_NAME)
   CATEGORY:=Utilities
   TITLE:=TPM2-TSS
   URL:=http://trousers.sourceforge.net
-  DEPENDS+= +libgcrypt
+  DEPENDS+= +tpm2-tss
 endef
 
-TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATI$
+#TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATI$
+
 
 define Package/$(PKG_NAME)/description
   TPM2-TSS
+
 endef
 
 
