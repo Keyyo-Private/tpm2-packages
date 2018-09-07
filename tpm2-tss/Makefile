@@ -8,7 +8,7 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 PKG_SOURCE_URL:=https://github.com/tpm2-software/$(PKG_NAME)/releases/download/$(PKG_VERSION)/
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=a53b25214375a10d87d0c0b0a702a3402c1f19e218196d4a2a44810516b260e5
-PKG_FIXUP:=autoreconf
+PKG_FIXUP:=patch-libtool
 PKG_LICENSE:=CPL-1.0
 PKG_LICENSE_FILES:=LICENCE
 PKG_BUILD_DEPENDS:=libgcrypt
@@ -27,10 +27,17 @@ define Package/$(PKG_NAME)
   DEPENDS+= +libgcrypt
 endef
 
+FIX=-U_FORTIFY_SOURCE $(TARGET_CFLAGS)
+
+TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATI$
+
+#-U_FORTIFY_SOURCE $(TARGET_CFLAGS)
+
 define Package/$(PKG_NAME)/description
   TPM2-TSS
 
 endef
+
 
 define Package/$(PKG_NAME)/install
         $(INSTALL_DIR) $(1)/usr/bin
