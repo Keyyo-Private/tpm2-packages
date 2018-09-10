@@ -9,8 +9,8 @@ PKG_SOURCE_URL:=https://github.com/tpm2-software/$(PKG_NAME)/releases/download/$
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=80136c2b247b4d8cdd34b70960622ba22126150a286e49f3e77cda5fcef36294
 PKG_FIXUP:=configure
-PKG_LICENSE:=CPL-1.0
-PKG_LICENSE_FILES:=LICENCE
+PKG_LICENSE:=BSD-3
+PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=tpm2-tss libopenssl libcurl
 
 PKG_INSTALL:=1
@@ -20,9 +20,9 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE:=TPM2-TSS
+  TITLE:=TPM2-TOOLS
   URL:=http://trousers.sourceforge.net
-  DEPENDS+= +tpm2-tss +libcrypto +libcurl
+  DEPENDS+= +tpm2-tss +libopenssl +libcurl
 endef
 
 TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATIONS)

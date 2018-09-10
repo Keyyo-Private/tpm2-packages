@@ -19,12 +19,12 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
-  TITLE:=TPM2-TSS
+  TITLE:=TPM2-ABRMD
   URL:=http://trousers.sourceforge.net
 endef
 
 define Package/$(PKG_NAME)/description
-  TPM2-TSS
+  TPM2-ABRMD
 
 endef
 
