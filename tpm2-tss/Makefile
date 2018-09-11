@@ -20,6 +20,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
+  SUBMENU:=TPM2
   TITLE:=TPM2-TSS
   URL:=https://github.com/tpm2-software/tpm2-tss
   DEPENDS+= +libgcrypt
