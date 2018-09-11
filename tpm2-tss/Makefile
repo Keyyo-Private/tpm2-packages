@@ -9,7 +9,7 @@ PKG_SOURCE_URL:=https://github.com/tpm2-software/$(PKG_NAME)/releases/download/$
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_HASH:=a53b25214375a10d87d0c0b0a702a3402c1f19e218196d4a2a44810516b260e5
 PKG_FIXUP:=patch-libtool
-PKG_LICENSE:=BSD-2
+PKG_LICENSE:=BSD-2-Clause
 PKG_LICENSE_FILES:=LICENSE
 PKG_BUILD_DEPENDS:=libgcrypt
 
@@ -21,14 +21,14 @@ define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=TPM2-TSS
-  URL:=http://trousers.sourceforge.net
+  URL:=https://github.com/tpm2-software/tpm2-tss
   DEPENDS+= +libgcrypt
 endef
 
 TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATION)
 
 define Package/$(PKG_NAME)/description
-TPM2-TSS
+OSS implementation of the TCG TPM2 Software Stack (TSS2)
 endef
 
 define Package/$(PKG_NAME)/install
