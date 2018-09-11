@@ -1,0 +1,15 @@
+--- a/src/include/cryptfs_tpm2.h
++++ b/src/include/cryptfs_tpm2.h
+@@ -61,9 +61,9 @@
+ 
+ #include <subcommand.h>
+ 
+-#include <tcti/tcti_socket.h>
+-#include <tcti/tcti_device.h>
+-#include <tcti/tcti-tabrmd.h>
++//#include <tcti/tcti_socket.h>
++#include <tss2/tss2_tcti_device.h>
++//#include <tcti/tcti-tabrmd.h>
+ 
+ #define stringify(x)			#x
+ 
