@@ -11,7 +11,7 @@ PKG_HASH:=80136c2b247b4d8cdd34b70960622ba22126150a286e49f3e77cda5fcef36294
 PKG_FIXUP:=configure
 PKG_LICENSE:=BSD-3-Clause
 PKG_LICENSE_FILES:=LICENSE
-PKG_BUILD_DEPENDS:=tpm2-tss tpm2-abrmd libopenssl libcurl
+PKG_BUILD_DEPENDS:=tpm2-tss libopenssl libcurl
 
 PKG_INSTALL:=1
 
@@ -23,7 +23,7 @@ define Package/$(PKG_NAME)
   SUBMENU:=TPM2
   TITLE:=TPM2-TOOLS
   URL:=https://github.com/tpm2-software/tpm2-tools
-  DEPENDS+= +tpm2-tss +tpm2-abrmd +libopenssl +libcurl
+  DEPENDS+= +tpm2-tss +libopenssl +libcurl
 endef
 
 TARGET_CFLAGS:= -U_FORTIFY_SOURCE $(TARGET_OPTIMIZATION)$(if $(CONFIG_DEBUG), -g3) $(EXTRA_OPTIMIZATIONS)

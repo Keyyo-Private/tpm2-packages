@@ -23,6 +23,7 @@ include $(INCLUDE_DIR)/package.mk
 define Package/$(PKG_NAME)
   SECTION:=utils
   CATEGORY:=Utilities
+  SUBMENU:=TPM2
   TITLE:=TPM2-TSS-ENGINE
   URL:=http://trousers.sourceforge.net
   DEPENDS+= +libopenssl
