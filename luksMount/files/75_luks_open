@@ -2,6 +2,7 @@
 # Copyright (C) 2018 Sebastien Decourriere
 
 do_luks_open() {
+	sh 
 	echo Trying to open luks device
 	/usr/bin/passphrase-from-tpm | cryptsetup -d - luksOpen /dev/sda2 data
 }
