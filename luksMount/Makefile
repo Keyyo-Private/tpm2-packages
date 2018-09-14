@@ -29,8 +29,10 @@ define Package/$(PKG_NAME)/description
 endef
 
 define Package/foo/install
-$(INSTALL_DIR) $(1)/etc
-$(CP) files/crypttab $(1)/etc/
+	$(INSTALL_DIR) $(1)/etc
+	$(CP) files/crypttab $(1)/etc/
+	$(INSTALL_DIR) $(1)/usr/bin
+	$(CP) files/passphrase-from-tpm $(1)/usr/bin/
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))

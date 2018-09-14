@@ -1,0 +1,1 @@
+data /dev/sda2 none luks,keyscript=/usr/bin/passphrase-from-tpm
