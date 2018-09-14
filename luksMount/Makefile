@@ -11,6 +11,8 @@ PKG_RELEASE:=1
 PKG_LICENSE:=GPL2
 PKG_LICENSE_FILES:=LICENSE
 
+# PKG_INSTALL:=1
+
 include $(INCLUDE_DIR)/package.mk
 
 define Package/$(PKG_NAME)
@@ -28,11 +30,11 @@ define Package/$(PKG_NAME)/description
   Luks partition mount utility using TPM2
 endef
 
-define Package/foo/install
-	$(INSTALL_DIR) $(1)/etc
-	$(CP) files/crypttab $(1)/etc/
+define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) files/passphrase-from-tpm $(1)/usr/bin/
+	$(INSTALL_DIR) $(1)/lib/preinit
+	$(CP) files/05_luks_open $(1)/lib/preinit/
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
