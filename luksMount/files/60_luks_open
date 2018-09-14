@@ -2,9 +2,15 @@
 # Copyright (C) 2018 Sebastien Decourriere
 
 do_luks_open() {
-	sh 
+	echo Creating node device
+	/bin/mknod /dev/tpm0 c 10 224
 	echo Trying to open luks device
 	/usr/bin/passphrase-from-tpm | cryptsetup -d - luksOpen /dev/sda2 data
+	if [ -b /dev/mapper/data ]; then
+		mkdir /mnt/data
+		mount /dev/mapper/data /overlay/
+		echo Secure volume mounted
+	fi
 }
 
 boot_hook_add preinit_main do_luks_open

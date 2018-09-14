@@ -34,7 +34,7 @@ define Package/$(PKG_NAME)/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(CP) files/passphrase-from-tpm $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/lib/preinit
-	$(CP) files/75_luks_open $(1)/lib/preinit/
+	$(CP) files/60_luks_open $(1)/lib/preinit/
 endef
 
 $(eval $(call BuildPackage,$(PKG_NAME)))
