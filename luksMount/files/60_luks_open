@@ -8,7 +8,7 @@ do_luks_open() {
 	/usr/bin/passphrase-from-tpm | cryptsetup -d - luksOpen /dev/sda2 data
 	if [ -b /dev/mapper/data ]; then
 		mkdir /mnt/data
-		mount /dev/mapper/data /overlay/
+		mount /dev/mapper/data /mnt/data/
 		echo Secure volume mounted
 	fi
 }
